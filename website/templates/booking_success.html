@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white text-center py-4">
+
+                    <h2 class="mb-2">
+                        ✅ Booking Request Received
+                    </h2>
+
+                    <p class="mb-0">
+                        Thank you for choosing <strong>Kalsi Global Links</strong>
+                    </p>
+
+                </div>
+
+                <div class="card-body p-5">
+
+                    <div class="alert alert-success">
+
+                        Your booking has been successfully submitted.
+
+                        Our ticketing department will review your request and
+                        contact you as soon as possible.
+
+                    </div>
+
+                    {% if booking %}
+
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th width="35%">Booking Reference</th>
+                            <td>
+                                <strong>{{ booking.booking_reference }}</strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Passenger</th>
+                            <td>
+                                {{ booking.first_name }} {{ booking.last_name }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ booking.email }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{ booking.phone }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Route</th>
+                            <td>
+                                {{ booking.origin }}
+                                →
+                                {{ booking.destination }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Departure</th>
+                            <td>{{ booking.departure_date }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Return</th>
+                            <td>{{ booking.return_date }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Travel Class</th>
+                            <td>{{ booking.travel_class }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Passengers</th>
+                            <td>
+
+                                Adults: {{ booking.adults }}<br>
+
+                                Children: {{ booking.children }}<br>
+
+                                Infants: {{ booking.infants }}
+
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    {% endif %}
+
+                    <div class="text-center mt-4">
+
+                        <a href="/"
+                           class="btn btn-primary btn-lg me-2">
+
+                            🏠 Home
+
+                        </a>
+
+                        <a href="/flights/"
+                           class="btn btn-success btn-lg me-2">
+
+                            ✈ Book Another Flight
+
+                        </a>
+
+                        <button
+                            onclick="window.print();"
+                            class="btn btn-outline-secondary btn-lg">
+
+                            🖨 Print
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer text-center">
+
+                    <small class="text-muted">
+
+                        Kalsi Global Links • Connecting You to Global Opportunities
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

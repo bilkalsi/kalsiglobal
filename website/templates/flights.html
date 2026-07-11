@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<h2 class="fw-bold mb-4">Search Flights</h2>
+
+<div class="card shadow p-4">
+
+<form method="GET" action="{% url 'flights' %}">
+
+<div class="row mb-3">
+
+<div class="col-md-3">
+<label>Trip Type</label>
+<select name="trip_type" class="form-control">
+<option value="oneway">One Way</option>
+<option value="round">Round Trip</option>
+</select>
+</div>
+
+<div class="col-md-3">
+<label>Adults</label>
+<input type="number" name="adults" class="form-control" value="1">
+</div>
+
+<div class="col-md-3">
+<label>Children</label>
+<input type="number" name="children" class="form-control" value="0">
+</div>
+
+<div class="col-md-3">
+<label>Infants</label>
+<input type="number" name="infants" class="form-control" value="0">
+</div>
+
+</div>
+
+
+<div class="row mb-3">
+
+<div class="col-md-3">
+<label>From</label>
+<input type="text" name="origin" class="form-control" placeholder="City or Airport">
+</div>
+
+<div class="col-md-3">
+<label>To</label>
+<input type="text" name="destination" class="form-control" placeholder="City or Airport">
+</div>
+
+<div class="col-md-3">
+<label>Departure Date</label>
+<input type="date" name="departure_date" class="form-control">
+</div>
+
+<div class="col-md-3">
+<label>Return Date</label>
+<input type="date" name="return_date" class="form-control">
+</div>
+
+</div>
+
+
+<div class="row mb-4">
+
+<div class="col-md-3">
+<label>Travel Class</label>
+<select name="travel_class" class="form-control">
+<option>Economy</option>
+<option>Business</option>
+<option>First</option>
+</select>
+</div>
+
+<div class="col-md-3 d-flex align-items-end">
+<button type="submit" class="btn btn-warning w-100">
+Search Flights
+</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="py-5">
+
+<div class="container">
+
+<h3 class="mb-4">Available Flights</h3>
+
+{% if flights %}
+
+{% for flight in flights %}
+
+<div class="card shadow mb-3">
+
+<div class="card-body">
+
+<div class="row align-items-center">
+
+<div class="col-md-3">
+
+<strong>{{ flight.airline }}</strong>
+
+<p class="text-muted">
+{{ flight.origin }} → {{ flight.destination }}
+</p>
+
+</div>
+
+<div class="col-md-2">
+Departure<br>
+<strong>{{ flight.departure }}</strong>
+</div>
+
+<div class="col-md-2">
+Arrival<br>
+<strong>{{ flight.arrival }}</strong>
+</div>
+
+<div class="col-md-2">
+Duration<br>
+<strong>{{ flight.duration }}</strong>
+</div>
+
+<div class="col-md-2">
+<h4 class="text-success">${{ flight.price }}</h4>
+</div>
+
+<div class="col-md-1">
+
+<a href="{% url 'book_flight' %}?origin={{ flight.origin }}&destination={{ flight.destination }}" class="btn btn-primary">
+
+Book
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+</section>
+
+{% endblock %}

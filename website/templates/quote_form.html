@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+<h2 class="mb-4">Request Special Flight Quote</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Origin</label>
+<input type="text" name="origin" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Destination</label>
+<input type="text" name="destination" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Departure Date</label>
+<input type="date" name="departure_date" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Return Date</label>
+<input type="date" name="return_date" class="form-control">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Passengers</label>
+<input type="number" name="passengers" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Cabin Class</label>
+<select name="cabin" class="form-control">
+<option>Economy</option>
+<option>Business</option>
+<option>First</option>
+</select>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Your Name</label>
+<input type="text" name="name" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Email</label>
+<input type="email" name="email" class="form-control" required>
+</div>
+
+<div class="col-md-12 mb-3">
+<label>Phone</label>
+<input type="text" name="phone" class="form-control" required>
+</div>
+
+</div>
+
+<button class="btn btn-warning">
+
+Request Quote
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+{% endblock %}
