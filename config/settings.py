@@ -1,4 +1,10 @@
 from pathlib import Path
+import os
+
+import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -6,14 +12,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # ------------------------------------------------------------------------------
 
-SECRET_KEY = "CHANGE-THIS-TO-A-NEW-SECRET-KEY-BEFORE-PRODUCTION"
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-development-key"
+)
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    "127.0.0.1,localhost"
+).split(",")
 
 # ------------------------------------------------------------------------------
 # APPLICATIONS
@@ -36,6 +45,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -72,10 +84,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 # ------------------------------------------------------------------------------
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
 }
 
 # ------------------------------------------------------------------------------
@@ -110,7 +121,7 @@ USE_I18N = True
 USE_TZ = True
 
 # ------------------------------------------------------------------------------
-# STATIC & MEDIA FILES
+# STATIC FILES
 # ------------------------------------------------------------------------------
 
 STATIC_URL = "/static/"
@@ -121,6 +132,10 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STATICFILES_STORAGE = (
+    "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
+
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
@@ -129,9 +144,15 @@ MEDIA_ROOT = BASE_DIR / "media"
 # EMAIL
 # ------------------------------------------------------------------------------
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = os.getenv(
+    "EMAIL_BACKEND",
+    "django.core.mail.backends.console.EmailBackend",
+)
 
-DEFAULT_FROM_EMAIL = "tickets@kalsiglobal.com"
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL",
+    "tickets@kalsiglobal.com",
+)
 
 # ------------------------------------------------------------------------------
 # DEFAULT PRIMARY KEY
