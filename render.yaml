@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: kalsiglobal
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    autoDeploy: true
+
+    envVars:
+      - key: DEBUG
+        value: False
+
+      - key: SECRET_KEY
+        generateValue: true
+
+      - key: ALLOWED_HOSTS
+        value: kalsiglobal.onrender.com
