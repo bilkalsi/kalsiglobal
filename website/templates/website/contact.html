@@ -1,0 +1,134 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us | Kalsi Global Links{% endblock %}
+
+{% block content %}
+
+<section>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<h1>Contact Us</h1>
+
+<p class="lead">
+We are ready to help you with your travel, education and medical needs.
+</p>
+
+<form method="post">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label class="form-label">Full Name</label>
+
+{{ form.name }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">Email Address</label>
+
+{{ form.email }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">Phone Number</label>
+
+{{ form.phone }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">Subject</label>
+
+{{ form.subject }}
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">Message</label>
+
+{{ form.message }}
+
+</div>
+
+<button type="submit" class="btn btn-primary btn-lg">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card shadow-sm">
+
+<div class="card-body">
+
+<h3>Kalsi Global Links</h3>
+
+<hr>
+
+<p>
+
+<strong>Email:</strong><br>
+
+info@kalsiglobal.com
+
+</p>
+
+<p>
+
+<strong>Phone:</strong><br>
+
++54 9 249 467336
+
+</p>
+
+<p>
+
+<strong>Services</strong>
+
+</p>
+
+<ul>
+
+<li>Flight Booking</li>
+
+<li>Hotel Reservations</li>
+
+<li>Study Abroad</li>
+
+<li>Medical Tourism</li>
+
+<li>Visa Assistance</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,352 @@
+/* =========================================
+   KALSI GLOBAL LINKS
+   Deep Navy Professional - Responsive
+========================================= */
+
+
+/* LARGE TABLETS */
+
+@media (max-width: 1199px) {
+
+    .main-navbar .nav-link {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        font-size: 0.88rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3.7rem;
+    }
+
+    .hero-main-image {
+        height: 470px;
+    }
+
+    .hero-floating-card {
+        left: -25px;
+    }
+
+}
+
+
+/* TABLETS */
+
+@media (max-width: 991px) {
+
+    .main-navbar {
+        min-height: 76px;
+    }
+
+    .navbar-collapse {
+        background: var(--navy-dark);
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(242, 182, 50, 0.15);
+    }
+
+    .main-navbar .nav-link {
+        padding: 10px 0 !important;
+    }
+
+    .navbar-contact-btn {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navy-hero {
+        min-height: auto;
+        padding: 75px 0 90px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 3.6rem;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image-wrapper {
+        margin: 55px auto 0;
+        max-width: 600px;
+    }
+
+    .hero-main-image {
+        height: 500px;
+    }
+
+    .hero-floating-card {
+        left: 25px;
+        bottom: 25px;
+    }
+
+    .stat-item::after {
+        display: none;
+    }
+
+    .stat-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .home-services,
+    .why-kalsi {
+        padding: 80px 0;
+    }
+
+    .why-kalsi {
+        text-align: center;
+    }
+
+    .benefit-card {
+        text-align: left;
+    }
+
+}
+
+
+/* MOBILE / SMALL TABLETS */
+
+@media (max-width: 767px) {
+
+    .navbar-logo {
+        width: 47px;
+        height: 47px;
+    }
+
+    .brand-name {
+        font-size: 1.15rem;
+    }
+
+    .brand-subtitle {
+        font-size: 0.56rem;
+    }
+
+    .navy-hero {
+        padding: 60px 0 75px;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.67rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-main-image {
+        height: 420px;
+    }
+
+    .hero-floating-card {
+        left: 15px;
+        right: 15px;
+        bottom: 18px;
+    }
+
+    .stat-item {
+        padding: 30px 10px;
+    }
+
+    .stat-item h2 {
+        font-size: 1.7rem;
+    }
+
+    .stat-item p {
+        font-size: 0.78rem;
+    }
+
+    .section-heading h2 {
+        font-size: 2.1rem;
+    }
+
+    .home-services,
+    .why-kalsi {
+        padding: 65px 0;
+    }
+
+    .why-kalsi h2 {
+        font-size: 2.1rem;
+    }
+
+    .service-image {
+        height: 250px;
+    }
+
+    .service-content p {
+        min-height: auto;
+    }
+
+    .home-cta {
+        padding: 65px 0;
+    }
+
+    .cta-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .main-footer {
+        padding-top: 55px;
+        text-align: center;
+    }
+
+    .footer-brand {
+        justify-content: center;
+    }
+
+    .footer-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-contact {
+        justify-content: center;
+    }
+
+}
+
+
+/* PHONES */
+
+@media (max-width: 575px) {
+
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .main-navbar {
+        min-height: 70px;
+    }
+
+    .navbar-logo {
+        width: 43px;
+        height: 43px;
+    }
+
+    .brand-name {
+        font-size: 1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .brand-subtitle {
+        font-size: 0.5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.55rem;
+    }
+
+    .hero-content h1 span {
+        display: inline;
+    }
+
+    .hero-description {
+        font-size: 0.94rem;
+    }
+
+    .hero-buttons {
+        display: block;
+    }
+
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .hero-image-wrapper {
+        margin-top: 40px;
+    }
+
+    .hero-main-image {
+        height: 350px;
+    }
+
+    .hero-image-border {
+        border-radius: 20px;
+        padding: 5px;
+    }
+
+    .hero-main-image {
+        border-radius: 14px;
+    }
+
+    .hero-floating-card {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: -30px 15px 0;
+    }
+
+    .stat-item {
+        min-height: 145px;
+    }
+
+    .stat-item > i {
+        font-size: 1.25rem;
+    }
+
+    .stat-item h2 {
+        font-size: 1.55rem;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.9rem;
+    }
+
+    .service-image {
+        height: 230px;
+    }
+
+    .why-kalsi h2 {
+        font-size: 1.9rem;
+    }
+
+    .benefit-card {
+        padding: 23px;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-content .btn {
+        width: 100%;
+    }
+
+    main > section:not(
+        .navy-hero,
+        .stats-section,
+        .home-services,
+        .why-kalsi,
+        .home-cta
+    ) {
+        padding: 55px 0;
+    }
+
+}

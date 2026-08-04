@@ -1,28 +1,33 @@
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
+*$py.class
 
 # Virtual Environment
+.venv/
 venv/
+env/
+
+# Environment Variables
 .env
 
-# SQLite
+# Database
 db.sqlite3
 
-# Static
+# Static & Media
 staticfiles/
-
-# Media
 media/
 
-# VS Code
-.vscode/
+# Logs
+*.log
 
-# PyCharm
+# IDE
+.vscode/
 .idea/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Git
+*.swp

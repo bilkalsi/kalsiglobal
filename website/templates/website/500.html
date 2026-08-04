@@ -1,0 +1,29 @@
+{% extends "website/base.html" %}
+
+{% block title %}500 - Server Error{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container text-center">
+
+<h1 class="display-1 fw-bold text-danger">500</h1>
+
+<h2>Internal Server Error</h2>
+
+<p class="lead">
+Something went wrong on our side. Please try again in a few moments.
+</p>
+
+<a href="{% url 'website:home' %}" class="btn btn-primary btn-lg mt-3">
+
+Return Home
+
+</a>
+
+</div>
+
+</section>
+
+{% endblock %}

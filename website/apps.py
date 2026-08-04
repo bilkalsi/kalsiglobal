@@ -2,4 +2,9 @@ from django.apps import AppConfig
 
 
 class WebsiteConfig(AppConfig):
-    name = 'website'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "website"
+    verbose_name = "Kalsi Global Links"
+
+    def ready(self):
+        import website.signals

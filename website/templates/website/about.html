@@ -1,0 +1,90 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}About Us | Kalsi Global Links{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1>About Kalsi Global Links</h1>
+
+<p class="lead">
+Connecting people with opportunities around the world since 2017.
+</p>
+
+<p>
+Kalsi Global Links is an international travel and consulting company committed to providing reliable services in flight reservations, hotel bookings, study abroad, medical tourism, visa assistance and travel consultation.
+</p>
+
+<p>
+Our goal is to simplify international travel by delivering professional guidance, competitive pricing and exceptional customer service.
+</p>
+
+<a href="{% url 'website:contact' %}" class="btn btn-primary btn-lg mt-3">
+Contact Us
+</a>
+
+</div>
+
+<div class="col-lg-6">
+
+<img src="{% static 'images/about.jpg' %}" alt="About Kalsi Global Links" class="img-fluid rounded shadow">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4 text-center">
+
+<h3>Mission</h3>
+
+<p>
+To connect individuals and organizations with trusted international travel and educational opportunities through professional and dependable services.
+</p>
+
+</div>
+
+<div class="col-md-4 text-center">
+
+<h3>Vision</h3>
+
+<p>
+To become one of Africa's most trusted international travel and consulting companies with a global reach.
+</p>
+
+</div>
+
+<div class="col-md-4 text-center">
+
+<h3>Values</h3>
+
+<p>
+Integrity, professionalism, excellence, transparency and customer satisfaction.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

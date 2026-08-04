@@ -1,0 +1,94 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Hotel Reservations | Kalsi Global Links{% endblock %}
+
+{% block content %}
+
+<section>
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1>Hotel Reservations</h1>
+
+<p class="lead">
+Book quality accommodation anywhere in the world.
+</p>
+
+<p>
+Whether you are traveling for business, tourism, education or medical treatment, we help you find the perfect hotel at the best available rates.
+</p>
+
+<div class="mt-4">
+
+<a href="{% url 'website:contact' %}" class="btn btn-primary btn-lg">
+
+Book Your Hotel
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<img src="{% static 'images/hotels.jpg' %}" class="img-fluid rounded shadow-lg">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bg-light">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-hotel fa-3x text-primary mb-3"></i>
+
+<h5>Luxury Hotels</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-bed fa-3x text-primary mb-3"></i>
+
+<h5>Budget Hotels</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-users fa-3x text-primary mb-3"></i>
+
+<h5>Family Rooms</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-earth-africa fa-3x text-primary mb-3"></i>
+
+<h5>Worldwide Booking</h5>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Flight Booking | Kalsi Global Links{% endblock %}
+
+{% block content %}
+
+<section>
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1>Flight Booking</h1>
+
+<p class="lead">
+Fly anywhere in the world with confidence.
+</p>
+
+<p>
+Kalsi Global Links provides affordable domestic and international flight reservations for individuals, families, students and corporate travelers.
+</p>
+
+<div class="row mt-4">
+
+<div class="col-6">
+
+<ul class="list-group">
+
+<li class="list-group-item">✔ One Way</li>
+<li class="list-group-item">✔ Return Tickets</li>
+<li class="list-group-item">✔ Multi-City</li>
+
+</ul>
+
+</div>
+
+<div class="col-6">
+
+<ul class="list-group">
+
+<li class="list-group-item">✔ Business Class</li>
+<li class="list-group-item">✔ Group Booking</li>
+<li class="list-group-item">✔ Corporate Travel</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<a href="{% url 'website:contact' %}" class="btn btn-primary btn-lg mt-4">
+
+Request Flight
+
+</a>
+
+</div>
+
+<div class="col-lg-6">
+
+<img src="{% static 'images/flights.jpg' %}" class="img-fluid rounded shadow-lg">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bg-light">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-4">
+
+<i class="fa-solid fa-plane-departure fa-3x text-primary mb-3"></i>
+
+<h4>Worldwide Routes</h4>
+
+<p>Flights to destinations across the globe.</p>
+
+</div>
+
+<div class="col-md-4">
+
+<i class="fa-solid fa-clock fa-3x text-primary mb-3"></i>
+
+<h4>24/7 Assistance</h4>
+
+<p>Professional support whenever you travel.</p>
+
+</div>
+
+<div class="col-md-4">
+
+<i class="fa-solid fa-money-bill-wave fa-3x text-primary mb-3"></i>
+
+<h4>Competitive Prices</h4>
+
+<p>Affordable fares through trusted partners.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

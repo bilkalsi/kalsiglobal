@@ -2,27 +2,56 @@ from django.urls import path
 
 from . import views
 
-## app_name = "website"
+app_name = "website"
 
 urlpatterns = [
-    path("", views.home, name="home"),
 
-    # Flights
-    path("flights/", views.flights, name="flights"),
-    path("book-flight/", views.book_flight, name="book_flight"),
+    path(
+        "",
+        views.home,
+        name="home",
+    ),
 
-    # Hotels
-    path("hotels/", views.hotels, name="hotels"),
+    path(
+        "about/",
+        views.about,
+        name="about",
+    ),
 
-    # Study Abroad
-    path("students/", views.students, name="students"),
+    path(
+        "services/",
+        views.services,
+        name="services",
+    ),
 
-    # Medical Tourism
-    path("medical/", views.medical, name="medical"),
+    path(
+        "flights/",
+        views.flights,
+        name="flights",
+    ),
 
-    # Quote Request
-    path("request-quote/", views.request_quote, name="request_quote"),
+    path(
+        "hotels/",
+        views.hotels,
+        name="hotels",
+    ),
 
-    # Contact
-    path("contact/", views.contact, name="contact"),
+    path(
+        "students/",
+        views.students,
+        name="students",
+    ),
+
+    path(
+        "medical/",
+        views.medical,
+        name="medical",
+    ),
+
+    path(
+        "contact/",
+        views.contact,
+        name="contact",
+    ),
+
 ]

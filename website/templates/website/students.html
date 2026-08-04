@@ -1,0 +1,114 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Study Abroad | Kalsi Global Links{% endblock %}
+
+{% block content %}
+
+<section>
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1>Study Abroad</h1>
+
+<p class="lead">
+Open the door to world-class education.
+</p>
+
+<p>
+We help students secure admission into universities and colleges across the world while providing complete guidance throughout the visa and travel process.
+</p>
+
+<div class="row mt-4">
+
+<div class="col-6">
+
+<ul class="list-group">
+
+<li class="list-group-item">✔ University Admission</li>
+
+<li class="list-group-item">✔ Student Visa</li>
+
+<li class="list-group-item">✔ Scholarships</li>
+
+</ul>
+
+</div>
+
+<div class="col-6">
+
+<ul class="list-group">
+
+<li class="list-group-item">✔ Accommodation</li>
+
+<li class="list-group-item">✔ Airport Pickup</li>
+
+<li class="list-group-item">✔ Pre-departure Support</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<a href="{% url 'website:contact' %}" class="btn btn-primary btn-lg mt-4">
+
+Start Your Application
+
+</a>
+
+</div>
+
+<div class="col-lg-6">
+
+<img src="{% static 'images/students.jpg' %}" class="img-fluid rounded shadow-lg">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bg-light">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<h4>Canada</h4>
+
+</div>
+
+<div class="col-md-3">
+
+<h4>United Kingdom</h4>
+
+</div>
+
+<div class="col-md-3">
+
+<h4>Australia</h4>
+
+</div>
+
+<div class="col-md-3">
+
+<h4>Europe</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}
