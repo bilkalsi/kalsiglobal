@@ -16,11 +16,9 @@ SECRET_KEY = os.getenv(
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv(
-        "ALLOWED_HOSTS",
-        "127.0.0.1,localhost",
-    ).split(",")
+    "127.0.0.1",
+    "localhost",
+    "bilkalsi.pythonanywhere.com",
 ]
 
 INSTALLED_APPS = [
@@ -56,7 +54,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "website.context_processors.site_settings",
+                "website.context_processors.website",
             ],
         },
     },
@@ -77,6 +75,10 @@ AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = "en-us"
 
+ADMIN_SITE_HEADER = "Kalsi Global Links Administration"
+ADMIN_SITE_TITLE = "Kalsi Global Links"
+ADMIN_INDEX_TITLE = "Management Dashboard"
+
 TIME_ZONE = "UTC"
 
 USE_I18N = True
@@ -84,9 +86,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "website" / "static",
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
