@@ -5,129 +5,348 @@
 
 {% block content %}
 
-<section>
+<!-- HERO -->
+<section class="page-hero">
+    <div class="container text-center">
 
-<div class="container">
+        <span class="hero-eyebrow">CONTACT US</span>
 
-<div class="row">
+        <h1>
+            Let's Talk About
+            <span>Your Next Journey</span>
+        </h1>
 
-<div class="col-lg-6">
+        <p>
+            Whether you're planning a trip, looking for international
+            education opportunities or seeking medical travel assistance,
+            our team is ready to hear from you.
+        </p>
 
-<h1>Contact Us</h1>
+    </div>
+</section>
 
-<p class="lead">
-We are ready to help you with your travel, education and medical needs.
-</p>
 
-<form method="post">
+<!-- CONTACT -->
+<section class="content-section-light">
+    <div class="container">
 
-{% csrf_token %}
+        <div class="row g-5 align-items-start">
 
-<div class="mb-3">
+            <!-- CONTACT INFORMATION -->
+            <div class="col-lg-5">
 
-<label class="form-label">Full Name</label>
+                <span class="section-label">GET IN TOUCH</span>
 
-{{ form.name }}
+                <h2 class="content-title">
+                    How Can We Help?
+                </h2>
 
-</div>
+                <p class="content-text">
+                    Send us a message and tell us what service you need.
+                    Our team will review your enquiry and get back to you.
+                </p>
 
-<div class="mb-3">
 
-<label class="form-label">Email Address</label>
+                <div class="info-card mt-4">
 
-{{ form.email }}
+                    <i class="fa-solid fa-envelope"></i>
 
-</div>
+                    <h4>Email Us</h4>
 
-<div class="mb-3">
+                    <p>
+                        For general enquiries, reservations and
+                        service requests.
+                    </p>
 
-<label class="form-label">Phone Number</label>
+                </div>
 
-{{ form.phone }}
 
-</div>
+                <div class="info-card mt-3">
 
-<div class="mb-3">
+                    <i class="fa-solid fa-earth-americas"></i>
 
-<label class="form-label">Subject</label>
+                    <h4>International Assistance</h4>
 
-{{ form.subject }}
+                    <p>
+                        Travel, accommodation, education and
+                        medical tourism enquiries are welcome.
+                    </p>
 
-</div>
+                </div>
 
-<div class="mb-3">
 
-<label class="form-label">Message</label>
+                <div class="info-card mt-3">
 
-{{ form.message }}
+                    <i class="fa-solid fa-clock"></i>
 
-</div>
+                    <h4>Send Your Enquiry Anytime</h4>
 
-<button type="submit" class="btn btn-primary btn-lg">
+                    <p>
+                        Use the contact form and our team will respond
+                        as soon as possible.
+                    </p>
 
-Send Message
+                </div>
 
-</button>
+            </div>
 
-</form>
 
-</div>
+            <!-- CONTACT FORM -->
+            <div class="col-lg-7">
 
-<div class="col-lg-6">
+                <div class="request-card">
 
-<div class="card shadow-sm">
+                    <form method="post">
 
-<div class="card-body">
+                        {% csrf_token %}
 
-<h3>Kalsi Global Links</h3>
+                        <div class="row g-3">
 
-<hr>
+                            <div class="col-md-6">
 
-<p>
+                                <label class="form-label">
+                                    Full Name
+                                </label>
 
-<strong>Email:</strong><br>
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       placeholder="Your full name"
+                                       required>
 
-info@kalsiglobal.com
+                            </div>
 
-</p>
 
-<p>
+                            <div class="col-md-6">
 
-<strong>Phone:</strong><br>
+                                <label class="form-label">
+                                    Email Address
+                                </label>
 
-+54 9 249 467336
+                                <input type="email"
+                                       name="email"
+                                       class="form-control"
+                                       placeholder="you@example.com"
+                                       required>
 
-</p>
+                            </div>
 
-<p>
 
-<strong>Services</strong>
+                            <div class="col-md-6">
 
-</p>
+                                <label class="form-label">
+                                    Phone / WhatsApp
+                                </label>
 
-<ul>
+                                <input type="text"
+                                       name="phone"
+                                       class="form-control"
+                                       placeholder="+54 ...">
 
-<li>Flight Booking</li>
+                            </div>
 
-<li>Hotel Reservations</li>
 
-<li>Study Abroad</li>
+                            <div class="col-md-6">
 
-<li>Medical Tourism</li>
+                                <label class="form-label">
+                                    Service
+                                </label>
 
-<li>Visa Assistance</li>
+                                <select name="subject"
+                                        class="form-select">
 
-</ul>
+                                    <option value="General Enquiry">
+                                        General Enquiry
+                                    </option>
 
-</div>
+                                    <option value="Flight Booking">
+                                        Flight Booking
+                                    </option>
 
-</div>
+                                    <option value="Hotel Reservation">
+                                        Hotel Reservation
+                                    </option>
 
-</div>
+                                    <option value="Study Abroad">
+                                        Study Abroad
+                                    </option>
 
-</div>
+                                    <option value="Medical Tourism">
+                                        Medical Tourism
+                                    </option>
 
-</div>
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Message
+                                </label>
+
+                                <textarea name="message"
+                                          class="form-control"
+                                          rows="6"
+                                          placeholder="Tell us how we can help you..."
+                                          required></textarea>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="btn btn-gold">
+
+                                    Send Message
+
+                                    <i class="fa-solid fa-paper-plane ms-2"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SERVICES SHORTCUT -->
+<section class="content-section">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span>OUR SERVICES</span>
+
+            <h2>What Can We Help You With?</h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'website:flights' %}"
+                   class="info-card text-center d-block">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+
+                    <h3>Flights</h3>
+
+                    <p>
+                        Domestic and international
+                        flight assistance.
+                    </p>
+
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'website:hotels' %}"
+                   class="info-card text-center d-block">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+
+                    <h3>Hotels</h3>
+
+                    <p>
+                        Accommodation for your
+                        international journey.
+                    </p>
+
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'website:students' %}"
+                   class="info-card text-center d-block">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <h3>Study Abroad</h3>
+
+                    <p>
+                        International education
+                        opportunities.
+                    </p>
+
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'website:medical' %}"
+                   class="info-card text-center d-block">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+
+                    <h3>Medical Tourism</h3>
+
+                    <p>
+                        Assistance planning treatment
+                        abroad.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="home-cta">
+
+    <div class="container">
+
+        <div class="cta-content text-center">
+
+            <span>KALSI GLOBAL LINKS</span>
+
+            <h2>Connecting You to Global Opportunities</h2>
+
+            <p>
+                Travel. Education. Healthcare. One team to help
+                you move forward.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 

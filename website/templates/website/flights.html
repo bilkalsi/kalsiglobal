@@ -5,111 +5,510 @@
 
 {% block content %}
 
-<section>
+<!-- FLIGHTS HERO -->
+<section class="flights-hero">
+    <div class="container">
 
-<div class="container">
+        <div class="row align-items-center g-5">
 
-<div class="row align-items-center">
+            <div class="col-lg-6">
 
-<div class="col-lg-6">
+                <span class="hero-eyebrow">FLIGHT BOOKING</span>
 
-<h1>Flight Booking</h1>
+                <h1>
+                    Your Journey Begins
+                    <span>With the Right Flight</span>
+                </h1>
 
-<p class="lead">
-Fly anywhere in the world with confidence.
-</p>
+                <p>
+                    Let us help you find convenient domestic and international
+                    flight options for business, leisure, education and
+                    medical travel.
+                </p>
 
-<p>
-Kalsi Global Links provides affordable domestic and international flight reservations for individuals, families, students and corporate travelers.
-</p>
+                <a href="#flight-request" class="btn btn-gold btn-lg">
+                    Request a Flight
+                    <i class="fa-solid fa-plane-departure ms-2"></i>
+                </a>
 
-<div class="row mt-4">
+            </div>
 
-<div class="col-6">
+            <div class="col-lg-6">
 
-<ul class="list-group">
+                <div class="flight-hero-image">
 
-<li class="list-group-item">✔ One Way</li>
-<li class="list-group-item">✔ Return Tickets</li>
-<li class="list-group-item">✔ Multi-City</li>
+                    <img src="{% static 'images/flights.jpg' %}"
+                         alt="International flight booking">
 
-</ul>
+                    <div class="flight-badge">
+                        <i class="fa-solid fa-earth-americas"></i>
 
-</div>
+                        <div>
+                            <strong>Worldwide Travel</strong>
+                            <span>Domestic & International</span>
+                        </div>
+                    </div>
 
-<div class="col-6">
+                </div>
 
-<ul class="list-group">
+            </div>
 
-<li class="list-group-item">✔ Business Class</li>
-<li class="list-group-item">✔ Group Booking</li>
-<li class="list-group-item">✔ Corporate Travel</li>
+        </div>
 
-</ul>
+    </div>
+</section>
 
-</div>
 
-</div>
+<!-- BENEFITS -->
+<section class="flight-benefits">
 
-<a href="{% url 'website:contact' %}" class="btn btn-primary btn-lg mt-4">
+    <div class="container">
 
-Request Flight
+        <div class="row g-4">
 
-</a>
+            <div class="col-md-4">
 
-</div>
+                <div class="flight-benefit-item">
 
-<div class="col-lg-6">
+                    <i class="fa-solid fa-magnifying-glass-dollar"></i>
 
-<img src="{% static 'images/flights.jpg' %}" class="img-fluid rounded shadow-lg">
+                    <div>
+                        <h4>Competitive Options</h4>
+                        <p>
+                            We help identify suitable flight options
+                            based on your route and travel needs.
+                        </p>
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+
+            <div class="col-md-4">
+
+                <div class="flight-benefit-item">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                    <div>
+                        <h4>Personal Assistance</h4>
+                        <p>
+                            Speak directly with our team when you need
+                            help planning your journey.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="flight-benefit-item">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <div>
+                        <h4>Global Routes</h4>
+                        <p>
+                            Flight assistance for destinations across
+                            Africa, Europe, Asia, the Americas and beyond.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<section class="bg-light">
 
-<div class="container">
+<!-- FLIGHT REQUEST -->
+<section class="flight-request-section" id="flight-request">
 
-<div class="row text-center">
+    <div class="container">
 
-<div class="col-md-4">
+        <div class="row g-5 align-items-start">
 
-<i class="fa-solid fa-plane-departure fa-3x text-primary mb-3"></i>
+            <div class="col-lg-5">
 
-<h4>Worldwide Routes</h4>
+                <span class="section-label">
+                    REQUEST A FLIGHT
+                </span>
 
-<p>Flights to destinations across the globe.</p>
+                <h2>
+                    Tell Us About Your Journey
+                </h2>
 
-</div>
+                <p>
+                    Send us your travel details and our team will review
+                    your request and contact you with available options.
+                </p>
 
-<div class="col-md-4">
 
-<i class="fa-solid fa-clock fa-3x text-primary mb-3"></i>
+                <div class="flight-contact-box">
 
-<h4>24/7 Assistance</h4>
+                    <div>
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
 
-<p>Professional support whenever you travel.</p>
+                    <div>
+                        <strong>Need assistance?</strong>
 
-</div>
+                        <span>
+                            Our team can help you plan your itinerary.
+                        </span>
+                    </div>
 
-<div class="col-md-4">
+                </div>
 
-<i class="fa-solid fa-money-bill-wave fa-3x text-primary mb-3"></i>
+            </div>
 
-<h4>Competitive Prices</h4>
 
-<p>Affordable fares through trusted partners.</p>
+            <div class="col-lg-7">
 
-</div>
+                <div class="flight-form-card">
 
-</div>
+                    <form method="post">
 
-</div>
+                        {% csrf_token %}
+
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       placeholder="Your full name"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input type="email"
+                                       name="email"
+                                       class="form-control"
+                                       placeholder="you@example.com"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Phone / WhatsApp
+                                </label>
+
+                                <input type="text"
+                                       name="phone"
+                                       class="form-control"
+                                       placeholder="+54 ...">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Trip Type
+                                </label>
+
+                                <select name="trip_type"
+                                        class="form-select">
+
+                                    <option value="Round Trip">
+                                        Round Trip
+                                    </option>
+
+                                    <option value="One Way">
+                                        One Way
+                                    </option>
+
+                                    <option value="Multi City">
+                                        Multi City
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Flying From
+                                </label>
+
+                                <input type="text"
+                                       name="origin"
+                                       class="form-control"
+                                       placeholder="City or airport"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Flying To
+                                </label>
+
+                                <input type="text"
+                                       name="destination"
+                                       class="form-control"
+                                       placeholder="City or airport"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Departure Date
+                                </label>
+
+                                <input type="date"
+                                       name="departure_date"
+                                       class="form-control"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Return Date
+                                </label>
+
+                                <input type="date"
+                                       name="return_date"
+                                       class="form-control">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Passengers
+                                </label>
+
+                                <input type="number"
+                                       name="passengers"
+                                       class="form-control"
+                                       value="1"
+                                       min="1">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Travel Class
+                                </label>
+
+                                <select name="travel_class"
+                                        class="form-select">
+
+                                    <option value="Economy">
+                                        Economy
+                                    </option>
+
+                                    <option value="Premium Economy">
+                                        Premium Economy
+                                    </option>
+
+                                    <option value="Business">
+                                        Business
+                                    </option>
+
+                                    <option value="First Class">
+                                        First Class
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Additional Information
+                                </label>
+
+                                <textarea name="message"
+                                          class="form-control"
+                                          rows="4"
+                                          placeholder="Preferred airline, baggage requirements, flexible dates or anything else we should know."></textarea>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="btn btn-gold flight-submit-btn">
+
+                                    Send Flight Request
+
+                                    <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="flight-process">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span>BOOK WITH CONFIDENCE</span>
+
+            <h2>How It Works</h2>
+
+            <p>
+                A simple way to request assistance with your next flight.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="flight-step">
+
+                    <span>01</span>
+
+                    <i class="fa-regular fa-pen-to-square"></i>
+
+                    <h3>Send Your Request</h3>
+
+                    <p>
+                        Tell us your destination, dates and
+                        travel preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="flight-step">
+
+                    <span>02</span>
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <h3>We Review Options</h3>
+
+                    <p>
+                        Our team checks suitable available
+                        options for your journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="flight-step">
+
+                    <span>03</span>
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                    <h3>Confirm Your Flight</h3>
+
+                    <p>
+                        Choose your preferred option and proceed
+                        with your booking.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="home-cta">
+
+    <div class="container">
+
+        <div class="cta-content text-center">
+
+            <span>WHERE WILL YOU GO NEXT?</span>
+
+            <h2>Let's Plan Your Journey</h2>
+
+            <p>
+                Send us your travel requirements and let our team assist you.
+            </p>
+
+            <a href="#flight-request"
+               class="btn btn-light btn-lg">
+
+                Request Your Flight
+
+                <i class="fa-solid fa-plane ms-2"></i>
+
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 

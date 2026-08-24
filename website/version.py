@@ -1,7 +1,2 @@
-__title__ = "Kalsi Global Links"
-
-__version__ = "1.0.0"
-
-__author__ = "Kalsi Global Links"
-
-__license__ = "MIT"
+VERSION = "2.0.0"
+BUILD = "2026.08"

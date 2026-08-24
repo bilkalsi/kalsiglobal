@@ -5,145 +5,307 @@
 
 {% block content %}
 
-<section>
+<!-- SERVICES HERO -->
+<section class="services-hero">
+    <div class="container text-center">
 
-<div class="container">
+        <span class="hero-eyebrow">OUR SERVICES</span>
 
-<div class="text-center mb-5">
+        <h1>
+            Global Solutions for
+            <span>Your Journey</span>
+        </h1>
 
-<h1>Our Professional Services</h1>
+        <p>
+            From international travel and accommodation to education
+            and healthcare, we help you move forward with confidence.
+        </p>
 
-<p class="lead">
-Providing reliable international solutions since 2017.
-</p>
+    </div>
+</section>
 
-</div>
 
-<div class="row g-4">
+<!-- SERVICES -->
+<section class="services-page">
+    <div class="container">
 
-<div class="col-lg-4">
+        <div class="row g-4">
 
-<div class="card shadow-lg h-100">
+            <!-- FLIGHTS -->
+            <div class="col-lg-6">
 
-<img src="{% static 'images/flights.jpg' %}" class="card-img-top">
+                <div class="service-large-card">
 
-<div class="card-body text-center">
+                    <div class="service-large-image">
+                        <img src="{% static 'images/flights.jpg' %}"
+                             alt="International Flight Booking">
 
-<i class="fa-solid fa-plane fa-3x text-primary mb-3"></i>
+                        <div class="service-large-icon">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                    </div>
 
-<h4>Flight Booking</h4>
+                    <div class="service-large-content">
 
-<p>Affordable domestic and international air tickets.</p>
+                        <span>TRAVEL</span>
 
-</div>
+                        <h2>Flight Booking</h2>
 
-</div>
+                        <p>
+                            Domestic and international flight booking
+                            assistance designed to help you find convenient
+                            travel options for business, leisure, education
+                            and medical journeys.
+                        </p>
 
-</div>
+                        <a href="{% url 'website:flights' %}">
+                            Explore Flight Services
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
-<div class="col-lg-4">
+                    </div>
 
-<div class="card shadow-lg h-100">
+                </div>
 
-<img src="{% static 'images/hotels.jpg' %}" class="card-img-top">
+            </div>
 
-<div class="card-body text-center">
 
-<i class="fa-solid fa-hotel fa-3x text-primary mb-3"></i>
+            <!-- HOTELS -->
+            <div class="col-lg-6">
 
-<h4>Hotel Reservations</h4>
+                <div class="service-large-card">
 
-<p>Hotels worldwide for every budget.</p>
+                    <div class="service-large-image">
+                        <img src="{% static 'images/hotels.jpg' %}"
+                             alt="Hotel Reservations">
 
-</div>
+                        <div class="service-large-icon">
+                            <i class="fa-solid fa-hotel"></i>
+                        </div>
+                    </div>
 
-</div>
+                    <div class="service-large-content">
 
-</div>
+                        <span>ACCOMMODATION</span>
 
-<div class="col-lg-4">
+                        <h2>Hotel Reservations</h2>
 
-<div class="card shadow-lg h-100">
+                        <p>
+                            Accommodation assistance for international
+                            travelers, families, students, business visitors
+                            and medical travelers across destinations
+                            worldwide.
+                        </p>
 
-<img src="{% static 'images/students.jpg' %}" class="card-img-top">
+                        <a href="{% url 'website:hotels' %}">
+                            Explore Hotel Services
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
-<div class="card-body text-center">
+                    </div>
 
-<i class="fa-solid fa-graduation-cap fa-3x text-primary mb-3"></i>
+                </div>
 
-<h4>Study Abroad</h4>
+            </div>
 
-<p>Admissions and student visa processing.</p>
 
-</div>
+            <!-- STUDY -->
+            <div class="col-lg-6">
 
-</div>
+                <div class="service-large-card">
 
-</div>
+                    <div class="service-large-image">
+                        <img src="{% static 'images/students.jpg' %}"
+                             alt="Study Abroad Services">
 
-<div class="col-lg-4">
+                        <div class="service-large-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                    </div>
 
-<div class="card shadow-lg h-100">
+                    <div class="service-large-content">
 
-<img src="{% static 'images/medical.jpg' %}" class="card-img-top">
+                        <span>EDUCATION</span>
 
-<div class="card-body text-center">
+                        <h2>Study Abroad</h2>
 
-<i class="fa-solid fa-user-doctor fa-3x text-primary mb-3"></i>
+                        <p>
+                            Guidance for students seeking international
+                            education opportunities, including institution
+                            selection, admission assistance and support
+                            throughout the application journey.
+                        </p>
 
-<h4>Medical Tourism</h4>
+                        <a href="{% url 'website:students' %}">
+                            Explore Study Opportunities
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
-<p>Medical travel to trusted international hospitals.</p>
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
 
-<div class="col-lg-4">
+            <!-- MEDICAL -->
+            <div class="col-lg-6">
 
-<div class="card shadow-lg h-100">
+                <div class="service-large-card">
 
-<img src="{% static 'images/passport.jpg' %}" class="card-img-top">
+                    <div class="service-large-image">
+                        <img src="{% static 'images/medical.jpg' %}"
+                             alt="Medical Tourism Services">
 
-<div class="card-body text-center">
+                        <div class="service-large-icon">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                    </div>
 
-<i class="fa-solid fa-passport fa-3x text-primary mb-3"></i>
+                    <div class="service-large-content">
 
-<h4>Visa Assistance</h4>
+                        <span>HEALTHCARE</span>
 
-<p>Professional immigration and visa consultation.</p>
+                        <h2>Medical Tourism</h2>
 
-</div>
+                        <p>
+                            International medical travel assistance,
+                            helping clients coordinate healthcare,
+                            hospitals, accommodation and travel for
+                            treatment abroad.
+                        </p>
 
-</div>
+                        <a href="{% url 'website:medical' %}">
+                            Explore Medical Services
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
-</div>
+                    </div>
 
-<div class="col-lg-4">
+                </div>
 
-<div class="card shadow-lg h-100">
+            </div>
 
-<img src="{% static 'images/about.jpg' %}" class="card-img-top">
+        </div>
 
-<div class="card-body text-center">
+    </div>
+</section>
 
-<i class="fa-solid fa-earth-africa fa-3x text-primary mb-3"></i>
 
-<h4>Travel Consultation</h4>
+<!-- PROCESS -->
+<section class="service-process">
 
-<p>Helping you make the right travel decisions.</p>
+    <div class="container">
 
-</div>
+        <div class="section-heading text-center">
 
-</div>
+            <span>HOW WE WORK</span>
 
-</div>
+            <h2>A Simple Journey</h2>
 
-</div>
+            <p>
+                Professional support from your first enquiry
+                to your next destination.
+            </p>
 
-</div>
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="process-card">
+
+                    <div class="process-number">01</div>
+
+                    <i class="fa-regular fa-comments"></i>
+
+                    <h3>Tell Us Your Goal</h3>
+
+                    <p>
+                        Contact our team and explain the travel,
+                        education or healthcare service you need.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="process-card">
+
+                    <div class="process-number">02</div>
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <h3>We Find the Solution</h3>
+
+                    <p>
+                        We review your requirements and guide you
+                        toward the most suitable available options.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="process-card">
+
+                    <div class="process-number">03</div>
+
+                    <i class="fa-solid fa-plane-departure"></i>
+
+                    <h3>Move Forward</h3>
+
+                    <p>
+                        Our team assists you through the necessary
+                        steps toward completing your journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="home-cta">
+
+    <div class="container">
+
+        <div class="cta-content text-center">
+
+            <span>GLOBAL OPPORTUNITIES START HERE</span>
+
+            <h2>How Can We Help You?</h2>
+
+            <p>
+                Speak with our team and tell us what you need.
+            </p>
+
+            <a href="{% url 'website:contact' %}"
+               class="btn btn-light btn-lg">
+
+                Get Started
+
+                <i class="fa-solid fa-arrow-right ms-2"></i>
+
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 

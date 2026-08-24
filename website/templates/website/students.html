@@ -5,109 +5,570 @@
 
 {% block content %}
 
-<section>
+<!-- HERO -->
+<section class="page-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
 
-<div class="container">
+            <div class="col-lg-6">
 
-<div class="row align-items-center">
+                <span class="hero-eyebrow">STUDY ABROAD</span>
 
-<div class="col-lg-6">
+                <h1>
+                    Your Education Can Take You
+                    <span>Anywhere</span>
+                </h1>
 
-<h1>Study Abroad</h1>
+                <p>
+                    We help students explore international education
+                    opportunities and navigate the journey from choosing
+                    an institution to preparing for study abroad.
+                </p>
 
-<p class="lead">
-Open the door to world-class education.
-</p>
+                <a href="#study-request" class="btn btn-gold btn-lg">
+                    Start Your Journey
+                    <i class="fa-solid fa-graduation-cap ms-2"></i>
+                </a>
 
-<p>
-We help students secure admission into universities and colleges across the world while providing complete guidance throughout the visa and travel process.
-</p>
+            </div>
 
-<div class="row mt-4">
+            <div class="col-lg-6">
 
-<div class="col-6">
+                <div class="page-image">
+                    <img src="{% static 'images/students.jpg' %}"
+                         alt="International students studying abroad">
+                </div>
 
-<ul class="list-group">
+            </div>
 
-<li class="list-group-item">✔ University Admission</li>
-
-<li class="list-group-item">✔ Student Visa</li>
-
-<li class="list-group-item">✔ Scholarships</li>
-
-</ul>
-
-</div>
-
-<div class="col-6">
-
-<ul class="list-group">
-
-<li class="list-group-item">✔ Accommodation</li>
-
-<li class="list-group-item">✔ Airport Pickup</li>
-
-<li class="list-group-item">✔ Pre-departure Support</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<a href="{% url 'website:contact' %}" class="btn btn-primary btn-lg mt-4">
-
-Start Your Application
-
-</a>
-
-</div>
-
-<div class="col-lg-6">
-
-<img src="{% static 'images/students.jpg' %}" class="img-fluid rounded shadow-lg">
-
-</div>
-
-</div>
-
-</div>
-
+        </div>
+    </div>
 </section>
 
-<section class="bg-light">
 
-<div class="container">
+<!-- FEATURES -->
+<section class="feature-strip">
+    <div class="container">
+        <div class="row g-4">
 
-<div class="row text-center">
+            <div class="col-md-4">
+                <div class="feature-strip-item">
 
-<div class="col-md-3">
+                    <i class="fa-solid fa-building-columns"></i>
 
-<h4>Canada</h4>
+                    <div>
+                        <h4>Institution Guidance</h4>
+                        <p>
+                            Assistance exploring universities,
+                            colleges and suitable study options.
+                        </p>
+                    </div>
 
-</div>
+                </div>
+            </div>
 
-<div class="col-md-3">
 
-<h4>United Kingdom</h4>
+            <div class="col-md-4">
+                <div class="feature-strip-item">
 
-</div>
+                    <i class="fa-solid fa-file-circle-check"></i>
 
-<div class="col-md-3">
+                    <div>
+                        <h4>Application Support</h4>
+                        <p>
+                            Guidance through admission requirements
+                            and the application process.
+                        </p>
+                    </div>
 
-<h4>Australia</h4>
+                </div>
+            </div>
 
-</div>
 
-<div class="col-md-3">
+            <div class="col-md-4">
+                <div class="feature-strip-item">
 
-<h4>Europe</h4>
+                    <i class="fa-solid fa-plane-departure"></i>
 
-</div>
+                    <div>
+                        <h4>Travel Preparation</h4>
+                        <p>
+                            Support with travel arrangements once
+                            you're ready to begin your studies.
+                        </p>
+                    </div>
 
-</div>
+                </div>
+            </div>
 
-</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- WHAT WE HELP WITH -->
+<section class="content-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span>STUDENT SUPPORT</span>
+
+            <h2>How We Can Help</h2>
+
+            <p>
+                Support for the important stages of your
+                international education journey.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card text-center">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <h3>Course Selection</h3>
+
+                    <p>
+                        Explore programs and institutions based
+                        on your academic goals and interests.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card text-center">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </div>
+
+                    <h3>Admissions</h3>
+
+                    <p>
+                        Assistance understanding requirements
+                        and preparing your application.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card text-center">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-passport"></i>
+                    </div>
+
+                    <h3>Visa Guidance</h3>
+
+                    <p>
+                        General guidance on documentation and
+                        student visa preparation.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="info-card text-center">
+
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+
+                    <h3>Travel Support</h3>
+
+                    <p>
+                        Flight and accommodation assistance as
+                        you prepare to travel.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- STUDENT REQUEST -->
+<section class="content-section-light" id="study-request">
+    <div class="container">
+
+        <div class="row g-5 align-items-start">
+
+            <div class="col-lg-5">
+
+                <span class="section-label">
+                    START YOUR APPLICATION
+                </span>
+
+                <h2 class="content-title">
+                    Tell Us About Your Study Plans
+                </h2>
+
+                <p class="content-text">
+                    Share your educational background and the type of
+                    opportunity you're looking for. Our team can then
+                    understand how best to assist you.
+                </p>
+
+
+                <div class="info-card mt-4">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <h4>Not Sure Where to Study?</h4>
+
+                    <p>
+                        You don't need to have everything decided.
+                        Tell us your preferred field, qualification
+                        and goals and we'll discuss the available path.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7">
+
+                <div class="request-card">
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input type="text"
+                                       name="name"
+                                       class="form-control"
+                                       placeholder="Your full name"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input type="email"
+                                       name="email"
+                                       class="form-control"
+                                       placeholder="you@example.com"
+                                       required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Phone / WhatsApp
+                                </label>
+
+                                <input type="text"
+                                       name="phone"
+                                       class="form-control"
+                                       placeholder="+54 ...">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Country of Residence
+                                </label>
+
+                                <input type="text"
+                                       name="country"
+                                       class="form-control"
+                                       placeholder="Your current country">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Highest Qualification
+                                </label>
+
+                                <select name="qualification"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select qualification
+                                    </option>
+
+                                    <option value="Secondary School">
+                                        Secondary School
+                                    </option>
+
+                                    <option value="Diploma">
+                                        Diploma
+                                    </option>
+
+                                    <option value="Bachelor Degree">
+                                        Bachelor's Degree
+                                    </option>
+
+                                    <option value="Master Degree">
+                                        Master's Degree
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Desired Study Level
+                                </label>
+
+                                <select name="study_level"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select level
+                                    </option>
+
+                                    <option value="Foundation">
+                                        Foundation
+                                    </option>
+
+                                    <option value="Undergraduate">
+                                        Undergraduate
+                                    </option>
+
+                                    <option value="Postgraduate">
+                                        Postgraduate
+                                    </option>
+
+                                    <option value="Doctorate">
+                                        Doctorate / PhD
+                                    </option>
+
+                                    <option value="Language">
+                                        Language Program
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Preferred Field
+                                </label>
+
+                                <input type="text"
+                                       name="field"
+                                       class="form-control"
+                                       placeholder="e.g. Engineering">
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Preferred Destination
+                                </label>
+
+                                <input type="text"
+                                       name="destination"
+                                       class="form-control"
+                                       placeholder="Country or countries">
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Tell Us More
+                                </label>
+
+                                <textarea name="message"
+                                          class="form-control"
+                                          rows="4"
+                                          placeholder="Tell us about your academic background, preferred course, destination or any questions you have."></textarea>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="btn btn-gold">
+
+                                    Send Study Enquiry
+
+                                    <i class="fa-solid fa-arrow-right ms-2"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROCESS -->
+<section class="content-section">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span>YOUR STUDY JOURNEY</span>
+
+            <h2>From Ambition to Admission</h2>
+
+            <p>
+                A clear path toward your international education goals.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <span class="step-number">01</span>
+
+                    <i class="fa-regular fa-comments"></i>
+
+                    <h3>Tell Us Your Goals</h3>
+
+                    <p>
+                        Share your education, interests and
+                        preferred study destination.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <span class="step-number">02</span>
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                    <h3>Explore Opportunities</h3>
+
+                    <p>
+                        Review suitable education and
+                        institution possibilities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <span class="step-number">03</span>
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <h3>Begin Your Journey</h3>
+
+                    <p>
+                        Move through admission preparation
+                        toward your international studies.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="home-cta">
+
+    <div class="container">
+
+        <div class="cta-content text-center">
+
+            <span>YOUR FUTURE HAS NO BORDERS</span>
+
+            <h2>Ready to Study Abroad?</h2>
+
+            <p>
+                Tell us your academic goals and let's explore
+                your international education opportunities.
+            </p>
+
+            <a href="#study-request"
+               class="btn btn-light btn-lg">
+
+                Start Your Journey
+
+                <i class="fa-solid fa-arrow-right ms-2"></i>
+
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 

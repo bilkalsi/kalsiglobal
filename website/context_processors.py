@@ -1,12 +1,9 @@
-from django.conf import settings
+from .version import VERSION, BUILD
 
 
-def site_settings(request):
+def website(request):
     return {
-        "SITE_NAME": "Kalsi Global Links",
-        "SITE_URL": "https://kalsiglobal.com",
-        "SITE_EMAIL": "info@kalsiglobal.com",
-        "SITE_PHONE": "+54 9 249 467336",
-        "COPYRIGHT_YEAR": 2023,
-        "DEBUG": settings.DEBUG,
+        "WEBSITE_NAME": "Kalsi Global Links",
+        "VERSION": VERSION,
+        "BUILD": BUILD,
     }
