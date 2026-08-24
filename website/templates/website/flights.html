@@ -1,515 +1,271 @@
 {% extends "website/base.html" %}
 {% load static %}
 
-{% block title %}Flight Booking | Kalsi Global Links{% endblock %}
-
 {% block content %}
 
-<!-- FLIGHTS HERO -->
-<section class="flights-hero">
-    <div class="container">
+<section class="flight-hero">
+    <div class="container flight-hero__inner">
 
-        <div class="row align-items-center g-5">
+        <div class="flight-hero__copy">
+            <span class="eyebrow">FLIGHT BOOKING</span>
+            <h1>Your Journey Begins<br><span>With the Right Flight</span></h1>
+            <p>Find and book domestic and international flights at the best prices.</p>
+        </div>
 
-            <div class="col-lg-6">
-
-                <span class="hero-eyebrow">FLIGHT BOOKING</span>
-
-                <h1>
-                    Your Journey Begins
-                    <span>With the Right Flight</span>
-                </h1>
-
-                <p>
-                    Let us help you find convenient domestic and international
-                    flight options for business, leisure, education and
-                    medical travel.
-                </p>
-
-                <a href="#flight-request" class="btn btn-gold btn-lg">
-                    Request a Flight
-                    <i class="fa-solid fa-plane-departure ms-2"></i>
-                </a>
-
+        <form method="GET" action="{% url 'website:flights' %}" class="flight-search-card">
+            <div class="flight-tabs" role="tablist">
+                <button type="button" class="flight-tab active" data-trip="round">Return</button>
+                <button type="button" class="flight-tab" data-trip="oneway">One-way</button>
+                <button type="button" class="flight-tab" data-trip="multi">Multi-city</button>
             </div>
 
-            <div class="col-lg-6">
+            <input type="hidden" name="trip_type" id="tripType" value="round">
 
-                <div class="flight-hero-image">
+            <div class="flight-search-grid">
 
-                    <img src="{% static 'images/flights.jpg' %}"
-                         alt="International flight booking">
-
-                    <div class="flight-badge">
-                        <i class="fa-solid fa-earth-americas"></i>
-
-                        <div>
-                            <strong>Worldwide Travel</strong>
-                            <span>Domestic & International</span>
-                        </div>
+                <div class="flight-field">
+                    <label for="origin">From</label>
+                    <div class="flight-input-wrap">
+                        <i class="bi bi-geo-alt"></i>
+                        <input id="origin" type="text" name="origin"
+                               placeholder="Origin city or airport"
+                               value="{{ request.GET.origin|default:'' }}"
+                               autocomplete="off">
                     </div>
-
                 </div>
 
-            </div>
+                <button type="button" class="swap-flight" id="swapFlight"
+                        aria-label="Swap origin and destination">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
 
-        </div>
+                <div class="flight-field">
+                    <label for="destination">To</label>
+                    <div class="flight-input-wrap">
+                        <i class="bi bi-geo-alt"></i>
+                        <input id="destination" type="text" name="destination"
+                               placeholder="Destination city or airport"
+                               value="{{ request.GET.destination|default:'' }}"
+                               autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="flight-field">
+                    <label for="departureDate">Departure</label>
+                    <div class="flight-input-wrap">
+                        <i class="bi bi-calendar3"></i>
+                        <input id="departureDate" type="date" name="departure_date"
+                               value="{{ request.GET.departure_date|default:'' }}">
+                    </div>
+                </div>
+
+                <div class="flight-field return-field">
+                    <label for="returnDate">Return</label>
+                    <div class="flight-input-wrap">
+                        <i class="bi bi-calendar3"></i>
+                        <input id="returnDate" type="date" name="return_date"
+                               value="{{ request.GET.return_date|default:'' }}">
+                    </div>
+                </div>
+
+                <div class="flight-field">
+                    <label for="travellersClass">Travellers &amp; Class</label>
+                    <div class="flight-input-wrap">
+                        <i class="bi bi-person"></i>
+                        <select id="travellersClass" name="travel_class">
+                            <option value="Economy">1 Traveller, Economy</option>
+                            <option value="Premium Economy">1 Traveller, Premium Economy</option>
+                            <option value="Business">1 Traveller, Business</option>
+                            <option value="First">1 Traveller, First</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="traveller-controls" id="travellerControls">
+                    <div>
+                        <label for="adults">Adults</label>
+                        <input id="adults" type="number" name="adults" min="1" max="9"
+                               value="{{ request.GET.adults|default:'1' }}">
+                    </div>
+                    <div>
+                        <label for="children">Children</label>
+                        <input id="children" type="number" name="children" min="0" max="9"
+                               value="{{ request.GET.children|default:'0' }}">
+                    </div>
+                    <div>
+                        <label for="infants">Infants</label>
+                        <input id="infants" type="number" name="infants" min="0" max="9"
+                               value="{{ request.GET.infants|default:'0' }}">
+                    </div>
+                </div>
+
+                <button class="search-flights-btn" type="submit">
+                    Search Flights <i class="bi bi-search"></i>
+                </button>
+
+            </div>
+        </form>
 
     </div>
 </section>
 
-
-<!-- BENEFITS -->
 <section class="flight-benefits">
-
     <div class="container">
+        <div class="flight-benefits-grid">
 
-        <div class="row g-4">
-
-            <div class="col-md-4">
-
-                <div class="flight-benefit-item">
-
-                    <i class="fa-solid fa-magnifying-glass-dollar"></i>
-
-                    <div>
-                        <h4>Competitive Options</h4>
-                        <p>
-                            We help identify suitable flight options
-                            based on your route and travel needs.
-                        </p>
-                    </div>
-
+            <div class="benefit-item">
+                <span class="benefit-icon"><i class="bi bi-shield-check"></i></span>
+                <div>
+                    <strong>Best Price Guarantee</strong>
+                    <small>We compare available options</small>
                 </div>
-
             </div>
 
-
-            <div class="col-md-4">
-
-                <div class="flight-benefit-item">
-
-                    <i class="fa-solid fa-headset"></i>
-
-                    <div>
-                        <h4>Personal Assistance</h4>
-                        <p>
-                            Speak directly with our team when you need
-                            help planning your journey.
-                        </p>
-                    </div>
-
+            <div class="benefit-item">
+                <span class="benefit-icon"><i class="bi bi-headset"></i></span>
+                <div>
+                    <strong>24/7 Customer Support</strong>
+                    <small>We are here to help</small>
                 </div>
-
             </div>
 
-
-            <div class="col-md-4">
-
-                <div class="flight-benefit-item">
-
-                    <i class="fa-solid fa-route"></i>
-
-                    <div>
-                        <h4>Global Routes</h4>
-                        <p>
-                            Flight assistance for destinations across
-                            Africa, Europe, Asia, the Americas and beyond.
-                        </p>
-                    </div>
-
+            <div class="benefit-item">
+                <span class="benefit-icon"><i class="bi bi-lock"></i></span>
+                <div>
+                    <strong>Secure Booking</strong>
+                    <small>Your information is protected</small>
                 </div>
+            </div>
 
+            <div class="benefit-item">
+                <span class="benefit-icon"><i class="bi bi-sliders"></i></span>
+                <div>
+                    <strong>Flexible Options</strong>
+                    <small>Change or cancel easily</small>
+                </div>
             </div>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- FLIGHT REQUEST -->
-<section class="flight-request-section" id="flight-request">
-
+{% if flights %}
+<section class="flight-results-section">
     <div class="container">
-
-        <div class="row g-5 align-items-start">
-
-            <div class="col-lg-5">
-
-                <span class="section-label">
-                    REQUEST A FLIGHT
-                </span>
-
-                <h2>
-                    Tell Us About Your Journey
-                </h2>
-
-                <p>
-                    Send us your travel details and our team will review
-                    your request and contact you with available options.
-                </p>
-
-
-                <div class="flight-contact-box">
-
-                    <div>
-                        <i class="fa-solid fa-plane"></i>
-                    </div>
-
-                    <div>
-                        <strong>Need assistance?</strong>
-
-                        <span>
-                            Our team can help you plan your itinerary.
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-lg-7">
-
-                <div class="flight-form-card">
-
-                    <form method="post">
-
-                        {% csrf_token %}
-
-
-                        <div class="row g-3">
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Full Name
-                                </label>
-
-                                <input type="text"
-                                       name="name"
-                                       class="form-control"
-                                       placeholder="Your full name"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Email Address
-                                </label>
-
-                                <input type="email"
-                                       name="email"
-                                       class="form-control"
-                                       placeholder="you@example.com"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Phone / WhatsApp
-                                </label>
-
-                                <input type="text"
-                                       name="phone"
-                                       class="form-control"
-                                       placeholder="+54 ...">
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Trip Type
-                                </label>
-
-                                <select name="trip_type"
-                                        class="form-select">
-
-                                    <option value="Round Trip">
-                                        Round Trip
-                                    </option>
-
-                                    <option value="One Way">
-                                        One Way
-                                    </option>
-
-                                    <option value="Multi City">
-                                        Multi City
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Flying From
-                                </label>
-
-                                <input type="text"
-                                       name="origin"
-                                       class="form-control"
-                                       placeholder="City or airport"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Flying To
-                                </label>
-
-                                <input type="text"
-                                       name="destination"
-                                       class="form-control"
-                                       placeholder="City or airport"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Departure Date
-                                </label>
-
-                                <input type="date"
-                                       name="departure_date"
-                                       class="form-control"
-                                       required>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Return Date
-                                </label>
-
-                                <input type="date"
-                                       name="return_date"
-                                       class="form-control">
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Passengers
-                                </label>
-
-                                <input type="number"
-                                       name="passengers"
-                                       class="form-control"
-                                       value="1"
-                                       min="1">
-
-                            </div>
-
-
-                            <div class="col-md-6">
-
-                                <label class="form-label">
-                                    Travel Class
-                                </label>
-
-                                <select name="travel_class"
-                                        class="form-select">
-
-                                    <option value="Economy">
-                                        Economy
-                                    </option>
-
-                                    <option value="Premium Economy">
-                                        Premium Economy
-                                    </option>
-
-                                    <option value="Business">
-                                        Business
-                                    </option>
-
-                                    <option value="First Class">
-                                        First Class
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="col-12">
-
-                                <label class="form-label">
-                                    Additional Information
-                                </label>
-
-                                <textarea name="message"
-                                          class="form-control"
-                                          rows="4"
-                                          placeholder="Preferred airline, baggage requirements, flexible dates or anything else we should know."></textarea>
-
-                            </div>
-
-
-                            <div class="col-12">
-
-                                <button type="submit"
-                                        class="btn btn-gold flight-submit-btn">
-
-                                    Send Flight Request
-
-                                    <i class="fa-solid fa-arrow-right ms-2"></i>
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-
+        <div class="section-heading left-heading">
+            <span class="eyebrow">AVAILABLE OPTIONS</span>
+            <h2>Choose Your Flight</h2>
+            <p>We found options for your requested route.</p>
         </div>
 
+        <div class="flight-results">
+            {% for flight in flights %}
+            <article class="flight-result-card">
+
+                <div class="airline-block">
+                    <span class="airline-logo"><i class="bi bi-airplane"></i></span>
+                    <div>
+                        <strong>{{ flight.airline }}</strong>
+                        <small>{{ flight.origin }} → {{ flight.destination }}</small>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <small>Departure</small>
+                    <strong>{{ flight.departure }}</strong>
+                </div>
+
+                <div class="route-line">
+                    <span></span>
+                    <small>{{ flight.duration }}</small>
+                    <span></span>
+                </div>
+
+                <div class="time-block">
+                    <small>Arrival</small>
+                    <strong>{{ flight.arrival }}</strong>
+                </div>
+
+                <div class="price-block">
+                    <small>From</small>
+                    <strong>${{ flight.price }}</strong>
+                    <a href="{% url 'website:contact' %}" class="result-book-btn">Book</a>
+                </div>
+
+            </article>
+            {% endfor %}
+        </div>
     </div>
-
 </section>
+{% endif %}
 
-
-<!-- HOW IT WORKS -->
-<section class="flight-process">
-
+<section class="how-flight-works">
     <div class="container">
 
-        <div class="section-heading text-center">
-
-            <span>BOOK WITH CONFIDENCE</span>
-
+        <div class="section-heading">
+            <span class="eyebrow">BOOK WITH CONFIDENCE</span>
             <h2>How It Works</h2>
-
-            <p>
-                A simple way to request assistance with your next flight.
-            </p>
-
+            <p>A simple way to search and book your next flight.</p>
         </div>
 
+        <div class="steps-grid">
 
-        <div class="row g-4">
-
-            <div class="col-md-4">
-
-                <div class="flight-step">
-
-                    <span>01</span>
-
-                    <i class="fa-regular fa-pen-to-square"></i>
-
-                    <h3>Send Your Request</h3>
-
-                    <p>
-                        Tell us your destination, dates and
-                        travel preferences.
-                    </p>
-
-                </div>
-
+            <div class="step-card">
+                <span class="step-number">01</span>
+                <span class="step-icon"><i class="bi bi-pencil-square"></i></span>
+                <h3>Search Your Flight</h3>
+                <p>Enter your destination, dates and travel preferences.</p>
             </div>
 
-
-            <div class="col-md-4">
-
-                <div class="flight-step">
-
-                    <span>02</span>
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    <h3>We Review Options</h3>
-
-                    <p>
-                        Our team checks suitable available
-                        options for your journey.
-                    </p>
-
-                </div>
-
+            <div class="step-card">
+                <span class="step-number">02</span>
+                <span class="step-icon"><i class="bi bi-search"></i></span>
+                <h3>Compare Options</h3>
+                <p>We find the best flights that suit your journey.</p>
             </div>
 
-
-            <div class="col-md-4">
-
-                <div class="flight-step">
-
-                    <span>03</span>
-
-                    <i class="fa-solid fa-ticket"></i>
-
-                    <h3>Confirm Your Flight</h3>
-
-                    <p>
-                        Choose your preferred option and proceed
-                        with your booking.
-                    </p>
-
-                </div>
-
+            <div class="step-card">
+                <span class="step-number">03</span>
+                <span class="step-icon"><i class="bi bi-ticket-perforated"></i></span>
+                <h3>Book with Confidence</h3>
+                <p>Choose your preferred flight and continue securely.</p>
             </div>
 
         </div>
-
     </div>
-
 </section>
 
+<script>
+(function () {
+    const tabs = document.querySelectorAll(".flight-tab");
+    const tripType = document.getElementById("tripType");
+    const returnField = document.querySelector(".return-field");
+    const swap = document.getElementById("swapFlight");
+    const origin = document.getElementById("origin");
+    const destination = document.getElementById("destination");
 
-<!-- CTA -->
-<section class="home-cta">
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function () {
+            tabs.forEach(item => item.classList.remove("active"));
+            this.classList.add("active");
+            tripType.value = this.dataset.trip;
 
-    <div class="container">
+            if (returnField) {
+                returnField.classList.toggle(
+                    "is-hidden",
+                    this.dataset.trip === "oneway"
+                );
+            }
+        });
+    });
 
-        <div class="cta-content text-center">
-
-            <span>WHERE WILL YOU GO NEXT?</span>
-
-            <h2>Let's Plan Your Journey</h2>
-
-            <p>
-                Send us your travel requirements and let our team assist you.
-            </p>
-
-            <a href="#flight-request"
-               class="btn btn-light btn-lg">
-
-                Request Your Flight
-
-                <i class="fa-solid fa-plane ms-2"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+    if (swap) {
+        swap.addEventListener("click", function () {
+            [origin.value, destination.value] =
+                [destination.value, origin.value];
+        });
+    }
+})();
+</script>
 
 {% endblock %}
