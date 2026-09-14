@@ -2,270 +2,397 @@
 {% load static %}
 
 {% block content %}
-
 <section class="flight-hero">
-    <div class="container flight-hero__inner">
+  <div class="container flight-hero__inner">
+    <div class="flight-hero__copy">
+      <span class="eyebrow">FLIGHT BOOKING</span>
+      <h1>Your Journey Begins<br><span>With the Right Flight</span></h1>
+      <p>Search domestic and international flights with flexible options for every journey.</p>
+    </div>
 
-        <div class="flight-hero__copy">
-            <span class="eyebrow">FLIGHT BOOKING</span>
-            <h1>Your Journey Begins<br><span>With the Right Flight</span></h1>
-            <p>Find and book domestic and international flights at the best prices.</p>
+    <form method="GET" action="{% url 'website:flights' %}" class="flight-search-card" id="flightSearchForm">
+      <div class="flight-tabs">
+        <button type="button" class="flight-tab active" data-trip="round">Return</button>
+        <button type="button" class="flight-tab" data-trip="oneway">One-way</button>
+        <button type="button" class="flight-tab" data-trip="multi">Multi-city</button>
+      </div>
+
+      <input type="hidden" name="trip_type" id="tripType" value="round">
+
+      <div id="standardFlightSearch" class="standard-flight-search">
+        <div class="flight-field">
+          <label for="origin">From</label>
+          <div class="flight-input-wrap">
+            <i class="bi bi-geo-alt"></i>
+            <input id="origin" name="origin" type="text" placeholder="City or airport"
+                   value="{{ request.GET.origin|default:'' }}" autocomplete="off">
+          </div>
         </div>
 
-        <form method="GET" action="{% url 'website:flights' %}" class="flight-search-card">
-            <div class="flight-tabs" role="tablist">
-                <button type="button" class="flight-tab active" data-trip="round">Return</button>
-                <button type="button" class="flight-tab" data-trip="oneway">One-way</button>
-                <button type="button" class="flight-tab" data-trip="multi">Multi-city</button>
+        <button type="button" class="swap-flight" id="swapFlight" aria-label="Swap airports">
+          <i class="bi bi-arrow-left-right"></i>
+        </button>
+
+        <div class="flight-field">
+          <label for="destination">To</label>
+          <div class="flight-input-wrap">
+            <i class="bi bi-geo-alt"></i>
+            <input id="destination" name="destination" type="text" placeholder="City or airport"
+                   value="{{ request.GET.destination|default:'' }}" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="flight-field">
+          <label for="departureDate">Departure</label>
+          <div class="flight-input-wrap">
+            <i class="bi bi-calendar3"></i>
+            <input id="departureDate" name="departure_date" type="date"
+                   value="{{ request.GET.departure_date|default:'' }}">
+          </div>
+        </div>
+
+        <div class="flight-field return-field">
+          <label for="returnDate">Return</label>
+          <div class="flight-input-wrap">
+            <i class="bi bi-calendar3"></i>
+            <input id="returnDate" name="return_date" type="date"
+                   value="{{ request.GET.return_date|default:'' }}">
+          </div>
+        </div>
+      </div>
+
+      <div id="multiCitySearch" class="multi-city-search">
+        <div class="multi-city-heading">
+          <div>
+            <strong>Multi-city itinerary</strong>
+            <small>Add up to 6 separate flight legs.</small>
+          </div>
+          <span id="multiCityCount">2 flights</span>
+        </div>
+
+        <div id="multiCityLegs" class="multi-city-legs">
+          <div class="multi-city-leg">
+            <div class="leg-number">1</div>
+            <div class="flight-field">
+              <label>From</label>
+              <div class="flight-input-wrap">
+                <i class="bi bi-geo-alt"></i>
+                <input name="leg_origin[]" type="text" placeholder="City or airport" autocomplete="off">
+              </div>
+            </div>
+            <div class="flight-field">
+              <label>To</label>
+              <div class="flight-input-wrap">
+                <i class="bi bi-geo-alt"></i>
+                <input name="leg_destination[]" type="text" placeholder="City or airport" autocomplete="off">
+              </div>
+            </div>
+            <div class="flight-field">
+              <label>Date</label>
+              <div class="flight-input-wrap">
+                <i class="bi bi-calendar3"></i>
+                <input name="leg_date[]" type="date">
+              </div>
+            </div>
+          </div>
+
+          <div class="multi-city-leg">
+            <div class="leg-number">2</div>
+            <div class="flight-field">
+              <label>From</label>
+              <div class="flight-input-wrap">
+                <i class="bi bi-geo-alt"></i>
+                <input name="leg_origin[]" type="text" placeholder="City or airport" autocomplete="off">
+              </div>
+            </div>
+            <div class="flight-field">
+              <label>To</label>
+              <div class="flight-input-wrap">
+                <i class="bi bi-geo-alt"></i>
+                <input name="leg_destination[]" type="text" placeholder="City or airport" autocomplete="off">
+              </div>
+            </div>
+            <div class="flight-field">
+              <label>Date</label>
+              <div class="flight-input-wrap">
+                <i class="bi bi-calendar3"></i>
+                <input name="leg_date[]" type="date">
+              </div>
+            </div>
+            <button type="button" class="remove-leg" aria-label="Remove flight">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="add-flight-leg" id="addFlightLeg">
+          <i class="bi bi-plus-circle"></i> Add another flight
+        </button>
+      </div>
+
+      <div class="flight-options-row">
+        <div class="flight-field traveller-field">
+          <label>Travellers &amp; Class</label>
+          <button type="button" class="traveller-selector" id="travellerSelector">
+            <i class="bi bi-person"></i>
+            <span id="travellerSummary">1 Adult · Economy</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+
+          <div class="traveller-panel" id="travellerPanel">
+            <div class="traveller-row">
+              <div><strong>Adults</strong><small>12+ years</small></div>
+              <div class="traveller-counter">
+                <button type="button" data-action="minus" data-target="adults">−</button>
+                <span id="adultsCount">1</span>
+                <button type="button" data-action="plus" data-target="adults">+</button>
+              </div>
+            </div>
+            <div class="traveller-row">
+              <div><strong>Children</strong><small>2–11 years</small></div>
+              <div class="traveller-counter">
+                <button type="button" data-action="minus" data-target="children">−</button>
+                <span id="childrenCount">0</span>
+                <button type="button" data-action="plus" data-target="children">+</button>
+              </div>
+            </div>
+            <div class="traveller-row">
+              <div><strong>Infants</strong><small>Under 2 years</small></div>
+              <div class="traveller-counter">
+                <button type="button" data-action="minus" data-target="infants">−</button>
+                <span id="infantsCount">0</span>
+                <button type="button" data-action="plus" data-target="infants">+</button>
+              </div>
             </div>
 
-            <input type="hidden" name="trip_type" id="tripType" value="round">
-
-            <div class="flight-search-grid">
-
-                <div class="flight-field">
-                    <label for="origin">From</label>
-                    <div class="flight-input-wrap">
-                        <i class="bi bi-geo-alt"></i>
-                        <input id="origin" type="text" name="origin"
-                               placeholder="Origin city or airport"
-                               value="{{ request.GET.origin|default:'' }}"
-                               autocomplete="off">
-                    </div>
-                </div>
-
-                <button type="button" class="swap-flight" id="swapFlight"
-                        aria-label="Swap origin and destination">
-                    <i class="bi bi-arrow-left-right"></i>
-                </button>
-
-                <div class="flight-field">
-                    <label for="destination">To</label>
-                    <div class="flight-input-wrap">
-                        <i class="bi bi-geo-alt"></i>
-                        <input id="destination" type="text" name="destination"
-                               placeholder="Destination city or airport"
-                               value="{{ request.GET.destination|default:'' }}"
-                               autocomplete="off">
-                    </div>
-                </div>
-
-                <div class="flight-field">
-                    <label for="departureDate">Departure</label>
-                    <div class="flight-input-wrap">
-                        <i class="bi bi-calendar3"></i>
-                        <input id="departureDate" type="date" name="departure_date"
-                               value="{{ request.GET.departure_date|default:'' }}">
-                    </div>
-                </div>
-
-                <div class="flight-field return-field">
-                    <label for="returnDate">Return</label>
-                    <div class="flight-input-wrap">
-                        <i class="bi bi-calendar3"></i>
-                        <input id="returnDate" type="date" name="return_date"
-                               value="{{ request.GET.return_date|default:'' }}">
-                    </div>
-                </div>
-
-                <div class="flight-field">
-                    <label for="travellersClass">Travellers &amp; Class</label>
-                    <div class="flight-input-wrap">
-                        <i class="bi bi-person"></i>
-                        <select id="travellersClass" name="travel_class">
-                            <option value="Economy">1 Traveller, Economy</option>
-                            <option value="Premium Economy">1 Traveller, Premium Economy</option>
-                            <option value="Business">1 Traveller, Business</option>
-                            <option value="First">1 Traveller, First</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="traveller-controls" id="travellerControls">
-                    <div>
-                        <label for="adults">Adults</label>
-                        <input id="adults" type="number" name="adults" min="1" max="9"
-                               value="{{ request.GET.adults|default:'1' }}">
-                    </div>
-                    <div>
-                        <label for="children">Children</label>
-                        <input id="children" type="number" name="children" min="0" max="9"
-                               value="{{ request.GET.children|default:'0' }}">
-                    </div>
-                    <div>
-                        <label for="infants">Infants</label>
-                        <input id="infants" type="number" name="infants" min="0" max="9"
-                               value="{{ request.GET.infants|default:'0' }}">
-                    </div>
-                </div>
-
-                <button class="search-flights-btn" type="submit">
-                    Search Flights <i class="bi bi-search"></i>
-                </button>
-
+            <div class="traveller-class">
+              <label for="cabinClass">Cabin class</label>
+              <select id="cabinClass" name="cabin_class">
+                <option value="economy">Economy</option>
+                <option value="premium_economy">Premium Economy</option>
+                <option value="business">Business</option>
+                <option value="first">First</option>
+              </select>
             </div>
-        </form>
 
-    </div>
+            <button type="button" class="traveller-done" id="travellerDone">Done</button>
+          </div>
+
+          <input type="hidden" name="adults" id="adultsInput" value="1">
+          <input type="hidden" name="children" id="childrenInput" value="0">
+          <input type="hidden" name="infants" id="infantsInput" value="0">
+        </div>
+
+        <button class="search-flights-btn" type="submit">
+          Search Flights <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
 
-<section class="flight-benefits">
-    <div class="container">
-        <div class="flight-benefits-grid">
-
-            <div class="benefit-item">
-                <span class="benefit-icon"><i class="bi bi-shield-check"></i></span>
-                <div>
-                    <strong>Best Price Guarantee</strong>
-                    <small>We compare available options</small>
-                </div>
-            </div>
-
-            <div class="benefit-item">
-                <span class="benefit-icon"><i class="bi bi-headset"></i></span>
-                <div>
-                    <strong>24/7 Customer Support</strong>
-                    <small>We are here to help</small>
-                </div>
-            </div>
-
-            <div class="benefit-item">
-                <span class="benefit-icon"><i class="bi bi-lock"></i></span>
-                <div>
-                    <strong>Secure Booking</strong>
-                    <small>Your information is protected</small>
-                </div>
-            </div>
-
-            <div class="benefit-item">
-                <span class="benefit-icon"><i class="bi bi-sliders"></i></span>
-                <div>
-                    <strong>Flexible Options</strong>
-                    <small>Change or cancel easily</small>
-                </div>
-            </div>
-
-        </div>
+<section class="feature-strip flight-benefits">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="benefit-item"><span class="benefit-icon"><i class="bi bi-shield-check"></i></span><div><strong>Best Price Guarantee</strong><small>We compare available options</small></div></div>
+      <div class="benefit-item"><span class="benefit-icon"><i class="bi bi-headset"></i></span><div><strong>24/7 Customer Support</strong><small>We are here to help</small></div></div>
+      <div class="benefit-item"><span class="benefit-icon"><i class="bi bi-lock"></i></span><div><strong>Secure Booking</strong><small>Your information is protected</small></div></div>
+      <div class="benefit-item"><span class="benefit-icon"><i class="bi bi-sliders"></i></span><div><strong>Flexible Options</strong><small>Travel plans that fit your needs</small></div></div>
     </div>
+  </div>
 </section>
 
 {% if flights %}
 <section class="flight-results-section">
-    <div class="container">
-        <div class="section-heading left-heading">
-            <span class="eyebrow">AVAILABLE OPTIONS</span>
-            <h2>Choose Your Flight</h2>
-            <p>We found options for your requested route.</p>
-        </div>
-
-        <div class="flight-results">
-            {% for flight in flights %}
-            <article class="flight-result-card">
-
-                <div class="airline-block">
-                    <span class="airline-logo"><i class="bi bi-airplane"></i></span>
-                    <div>
-                        <strong>{{ flight.airline }}</strong>
-                        <small>{{ flight.origin }} → {{ flight.destination }}</small>
-                    </div>
-                </div>
-
-                <div class="time-block">
-                    <small>Departure</small>
-                    <strong>{{ flight.departure }}</strong>
-                </div>
-
-                <div class="route-line">
-                    <span></span>
-                    <small>{{ flight.duration }}</small>
-                    <span></span>
-                </div>
-
-                <div class="time-block">
-                    <small>Arrival</small>
-                    <strong>{{ flight.arrival }}</strong>
-                </div>
-
-                <div class="price-block">
-                    <small>From</small>
-                    <strong>${{ flight.price }}</strong>
-                    <a href="{% url 'website:contact' %}" class="result-book-btn">Book</a>
-                </div>
-
-            </article>
-            {% endfor %}
-        </div>
+  <div class="container">
+    <div class="section-heading left-heading">
+      <span class="eyebrow">AVAILABLE OPTIONS</span>
+      <h2>Choose Your Flight</h2>
+      <p>We found options for your requested route.</p>
     </div>
+    <div class="flight-results">
+      {% for flight in flights %}
+      <article class="flight-result-card">
+        <div class="airline-block">
+          <span class="airline-logo"><i class="bi bi-airplane"></i></span>
+          <div><strong>{{ flight.airline }}</strong><small>{{ flight.origin }} → {{ flight.destination }}</small></div>
+        </div>
+        <div class="time-block"><small>Departure</small><strong>{{ flight.departure }}</strong></div>
+        <div class="route-line"><span></span><small>{{ flight.duration }}</small><span></span></div>
+        <div class="time-block"><small>Arrival</small><strong>{{ flight.arrival }}</strong></div>
+        <div class="price-block"><small>From</small><strong>${{ flight.price }}</strong><a href="{% url 'website:contact' %}" class="result-book-btn">Book</a></div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 {% endif %}
 
-<section class="how-flight-works">
-    <div class="container">
-
-        <div class="section-heading">
-            <span class="eyebrow">BOOK WITH CONFIDENCE</span>
-            <h2>How It Works</h2>
-            <p>A simple way to search and book your next flight.</p>
-        </div>
-
-        <div class="steps-grid">
-
-            <div class="step-card">
-                <span class="step-number">01</span>
-                <span class="step-icon"><i class="bi bi-pencil-square"></i></span>
-                <h3>Search Your Flight</h3>
-                <p>Enter your destination, dates and travel preferences.</p>
-            </div>
-
-            <div class="step-card">
-                <span class="step-number">02</span>
-                <span class="step-icon"><i class="bi bi-search"></i></span>
-                <h3>Compare Options</h3>
-                <p>We find the best flights that suit your journey.</p>
-            </div>
-
-            <div class="step-card">
-                <span class="step-number">03</span>
-                <span class="step-icon"><i class="bi bi-ticket-perforated"></i></span>
-                <h3>Book with Confidence</h3>
-                <p>Choose your preferred flight and continue securely.</p>
-            </div>
-
-        </div>
+<section class="process-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">BOOK WITH CONFIDENCE</span>
+      <h2>How It Works</h2>
+      <p>A simple way to search and book your next flight.</p>
     </div>
+    <div class="process-grid">
+      <div class="step-card"><span class="step-number">01</span><span class="step-icon"><i class="bi bi-pencil-square"></i></span><h3>Search Your Flight</h3><p>Enter your route, dates and travel preferences.</p></div>
+      <div class="step-card"><span class="step-number">02</span><span class="step-icon"><i class="bi bi-search"></i></span><h3>Compare Options</h3><p>Review the available flights that suit your journey.</p></div>
+      <div class="step-card"><span class="step-number">03</span><span class="step-icon"><i class="bi bi-ticket-perforated"></i></span><h3>Book with Confidence</h3><p>Choose your preferred flight and continue securely.</p></div>
+    </div>
+  </div>
 </section>
 
 <script>
 (function () {
-    const tabs = document.querySelectorAll(".flight-tab");
-    const tripType = document.getElementById("tripType");
-    const returnField = document.querySelector(".return-field");
-    const swap = document.getElementById("swapFlight");
-    const origin = document.getElementById("origin");
-    const destination = document.getElementById("destination");
+  "use strict";
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", function () {
-            tabs.forEach(item => item.classList.remove("active"));
-            this.classList.add("active");
-            tripType.value = this.dataset.trip;
+  const form = document.getElementById("flightSearchForm");
+  const tabs = document.querySelectorAll(".flight-tab");
+  const tripType = document.getElementById("tripType");
+  const standard = document.getElementById("standardFlightSearch");
+  const multi = document.getElementById("multiCitySearch");
+  const returnField = document.querySelector(".return-field");
 
-            if (returnField) {
-                returnField.classList.toggle(
-                    "is-hidden",
-                    this.dataset.trip === "oneway"
-                );
-            }
-        });
+  function setTrip(type) {
+    tripType.value = type;
+    tabs.forEach(t => t.classList.toggle("active", t.dataset.trip === type));
+    standard.classList.toggle("is-hidden", type === "multi");
+    multi.classList.toggle("is-visible", type === "multi");
+    returnField.classList.toggle("is-hidden", type === "oneway");
+  }
+
+  tabs.forEach(tab => tab.addEventListener("click", () => setTrip(tab.dataset.trip)));
+
+  const swap = document.getElementById("swapFlight");
+  const origin = document.getElementById("origin");
+  const destination = document.getElementById("destination");
+
+  swap.addEventListener("click", () => {
+    [origin.value, destination.value] = [destination.value, origin.value];
+  });
+
+  const legs = document.getElementById("multiCityLegs");
+  const addLeg = document.getElementById("addFlightLeg");
+  const legCount = document.getElementById("multiCityCount");
+  const MAX_LEGS = 6;
+
+  function updateLegs() {
+    const all = legs.querySelectorAll(".multi-city-leg");
+    all.forEach((leg, i) => leg.querySelector(".leg-number").textContent = i + 1);
+    legCount.textContent = `${all.length} flight${all.length === 1 ? "" : "s"}`;
+    addLeg.disabled = all.length >= MAX_LEGS;
+  }
+
+  function newLeg() {
+    const el = document.createElement("div");
+    el.className = "multi-city-leg";
+    el.innerHTML = `
+      <div class="leg-number"></div>
+      <div class="flight-field"><label>From</label><div class="flight-input-wrap"><i class="bi bi-geo-alt"></i><input name="leg_origin[]" type="text" placeholder="City or airport" autocomplete="off"></div></div>
+      <div class="flight-field"><label>To</label><div class="flight-input-wrap"><i class="bi bi-geo-alt"></i><input name="leg_destination[]" type="text" placeholder="City or airport" autocomplete="off"></div></div>
+      <div class="flight-field"><label>Date</label><div class="flight-input-wrap"><i class="bi bi-calendar3"></i><input name="leg_date[]" type="date"></div></div>
+      <button type="button" class="remove-leg" aria-label="Remove flight"><i class="bi bi-x-lg"></i></button>
+    `;
+    return el;
+  }
+
+  addLeg.addEventListener("click", () => {
+    const all = legs.querySelectorAll(".multi-city-leg");
+    if (all.length >= MAX_LEGS) return;
+
+    const lastTo = all[all.length - 1].querySelector('input[name="leg_destination[]"]');
+    const el = newLeg();
+    el.querySelector('input[name="leg_origin[]"]').value = lastTo.value;
+    legs.appendChild(el);
+    updateLegs();
+  });
+
+  legs.addEventListener("click", event => {
+    const button = event.target.closest(".remove-leg");
+    if (!button) return;
+
+    if (legs.querySelectorAll(".multi-city-leg").length <= 2) return;
+
+    button.closest(".multi-city-leg").remove();
+    updateLegs();
+  });
+
+  const travellerPanel = document.getElementById("travellerPanel");
+  const travellerSelector = document.getElementById("travellerSelector");
+  const travellerDone = document.getElementById("travellerDone");
+
+  const passengers = { adults: 1, children: 0, infants: 0 };
+
+  function updatePassengers() {
+    Object.keys(passengers).forEach(key => {
+      document.getElementById(key + "Count").textContent = passengers[key];
+      document.getElementById(key + "Input").value = passengers[key];
     });
 
-    if (swap) {
-        swap.addEventListener("click", function () {
-            [origin.value, destination.value] =
-                [destination.value, origin.value];
-        });
+    const cabin = document.getElementById("cabinClass");
+    let text = `${passengers.adults} Adult${passengers.adults === 1 ? "" : "s"}`;
+
+    if (passengers.children) text += `, ${passengers.children} Child${passengers.children === 1 ? "" : "ren"}`;
+    if (passengers.infants) text += `, ${passengers.infants} Infant${passengers.infants === 1 ? "" : "s"}`;
+
+    text += ` · ${cabin.options[cabin.selectedIndex].text}`;
+    document.getElementById("travellerSummary").textContent = text;
+  }
+
+  document.querySelectorAll(".traveller-counter button").forEach(button => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.target;
+      const action = button.dataset.action;
+
+      if (action === "plus") {
+        if (target === "adults" && passengers.adults < 9) passengers.adults++;
+        if (target === "children" && passengers.children < 9) passengers.children++;
+        if (target === "infants" && passengers.infants < passengers.adults) passengers.infants++;
+      }
+
+      if (action === "minus") {
+        if (target === "adults" && passengers.adults > 1) passengers.adults--;
+        if (target === "children" && passengers.children > 0) passengers.children--;
+        if (target === "infants" && passengers.infants > 0) passengers.infants--;
+        if (passengers.infants > passengers.adults) passengers.infants = passengers.adults;
+      }
+
+      updatePassengers();
+    });
+  });
+
+  travellerSelector.addEventListener("click", e => {
+    e.stopPropagation();
+    travellerPanel.classList.toggle("open");
+  });
+
+  travellerDone.addEventListener("click", () => travellerPanel.classList.remove("open"));
+
+  document.getElementById("cabinClass").addEventListener("change", updatePassengers);
+
+  document.addEventListener("click", event => {
+    if (!event.target.closest(".traveller-field")) travellerPanel.classList.remove("open");
+  });
+
+  form.addEventListener("submit", event => {
+    if (tripType.value !== "multi") return;
+
+    const all = legs.querySelectorAll(".multi-city-leg");
+    for (const leg of all) {
+      for (const input of leg.querySelectorAll("input")) {
+        if (!input.value.trim()) {
+          event.preventDefault();
+          alert("Please complete every multi-city flight leg before searching.");
+          return;
+        }
+      }
     }
+  });
+
+  updateLegs();
+  updatePassengers();
+  setTrip("round");
 })();
 </script>
-
 {% endblock %}
